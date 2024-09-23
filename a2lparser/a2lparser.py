@@ -25,6 +25,7 @@ import sys
 import glob
 from pathlib import Path
 from loguru import logger
+from typing import Union
 from a2lparser.a2l.a2l_yacc import A2LYacc
 from a2lparser.a2l.a2l_validator import A2LValidator
 from a2lparser.a2lparser_exception import A2LParserException
@@ -203,7 +204,7 @@ class A2LParser:
                 content = self._include_pattern.sub(included_content, content)
         return content
 
-    def _find_includes(self, content: str) -> str | list | None:
+    def _find_includes(self, content: str) -> Union[str, list, None]:
         """
         Looks for /include {file.a2l} tags inside given content and returns the full filename.
 
